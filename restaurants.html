@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Best Restaurants in Nairobi, Kenya 2026 - Tripadvisor</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--green:#00af87;--green-dark:#007a5e;--green-light:#e8f8f4;--text:#1a1a1a;--muted:#666;--border:#e0e0e0;--bg:#f5f5f5}
+body{font-family:'Source Sans 3',sans-serif;color:var(--text);background:var(--bg)}
+a{text-decoration:none;color:inherit}
+nav{background:#fff;border-bottom:1px solid var(--border);padding:0 24px;position:sticky;top:0;z-index:100;height:56px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 4px rgba(0,0,0,0.08)}
+.logo{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--green);display:flex;align-items:center;gap:6px}
+.nav-links{display:flex;gap:4px;margin-left:16px}
+.nav-link{padding:6px 12px;border-radius:20px;font-size:0.88rem;font-weight:600;color:var(--muted);cursor:pointer;transition:background 0.15s}
+.nav-link:hover{background:#f0f0f0;color:var(--text)}
+.nav-link.active{color:var(--text)}
+.nav-left{display:flex;align-items:center}
+.btn-signin{background:transparent;border:2px solid var(--text);border-radius:24px;padding:6px 18px;font-weight:700;font-size:0.85rem;cursor:pointer}
+.city-nav{background:#fff;border-bottom:2px solid var(--border);padding:0 24px;display:flex;align-items:center}
+.city-tab{padding:12px 18px;font-size:0.9rem;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;display:flex;align-items:center;gap:6px}
+.city-tab.active{color:var(--text);border-bottom-color:var(--green)}
+.breadcrumb{background:#fff;padding:8px 24px;font-size:0.8rem;color:var(--muted);border-bottom:1px solid var(--border)}
+.breadcrumb span{margin:0 6px}
+.page-header{background:#fff;padding:20px 24px;border-bottom:1px solid var(--border)}
+.page-header h1{font-family:'Playfair Display',serif;font-size:2rem;margin-bottom:4px}
+.page-header .subtitle{font-size:0.88rem;color:var(--muted)}
+.page-layout{display:flex;max-width:1200px;margin:0 auto;padding:20px 16px;gap:0;align-items:flex-start}
+
+/* SIDEBAR */
+.sidebar{width:260px;min-width:260px;background:#fff;border-radius:12px;border:1px solid var(--border);overflow:hidden;position:sticky;top:70px}
+.sidebar-title{padding:14px 20px;font-weight:700;font-size:0.95rem;border-bottom:1px solid var(--border)}
+.filter-section{padding:14px 20px;border-bottom:1px solid #f0f0f0}
+.filter-title{font-weight:700;font-size:0.85rem;margin-bottom:10px;display:flex;justify-content:space-between;cursor:pointer}
+.filter-item{display:flex;align-items:center;gap:8px;margin-bottom:9px;cursor:pointer}
+.filter-item input[type=checkbox]{width:16px;height:16px;accent-color:var(--green);cursor:pointer}
+.filter-item label{font-size:0.85rem;cursor:pointer;flex:1}
+.filter-item .count{font-size:0.75rem;color:var(--muted)}
+
+/* RESULTS */
+.results{flex:1;padding-left:20px}
+.sort-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.results-count{font-size:0.88rem;color:var(--muted)}
+.results-count strong{color:var(--text)}
+.sort-wrap{display:flex;align-items:center;gap:6px;font-size:0.85rem;color:var(--muted)}
+.sort-select{border:1.5px solid var(--border);border-radius:8px;padding:5px 10px;font-size:0.85rem;font-family:'Source Sans 3',sans-serif;cursor:pointer;outline:none;background:#fff}
+
+/* CARD */
+.rest-card{background:#fff;border-radius:12px;border:1px solid var(--border);overflow:hidden;display:flex;margin-bottom:16px;transition:box-shadow 0.2s;cursor:pointer}
+.rest-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.12)}
+.rest-img{width:220px;min-width:220px;height:200px;object-fit:cover;display:block;background:#ddd}
+.rest-body{padding:16px;flex:1;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.rest-info{flex:1;min-width:0}
+.rest-rank{font-size:0.8rem;color:var(--muted);margin-bottom:2px}
+.rest-name{font-weight:700;font-size:1.05rem;margin-bottom:4px}
+.rating-row{display:flex;align-items:center;gap:6px;margin-bottom:5px}
+.bubble{width:13px;height:13px;border-radius:50%;background:var(--green);display:inline-block}
+.bubble.half{background:linear-gradient(90deg,var(--green) 50%,#ddd 50%)}
+.bubble.empty{background:#ddd}
+.rating-text{font-size:0.8rem;font-weight:600}
+.review-count{font-size:0.78rem;color:var(--muted)}
+.rest-meta{font-size:0.8rem;color:var(--muted);margin-bottom:5px;display:flex;flex-wrap:wrap;align-items:center;gap:5px}
+.dot{width:3px;height:3px;border-radius:50%;background:var(--muted);display:inline-block}
+.open-now{color:#00af87;font-weight:600;font-size:0.8rem}
+.open-soon{color:#e67e22;font-weight:600;font-size:0.8rem}
+.closed{color:#e74c3c;font-weight:600;font-size:0.8rem}
+.rest-desc{font-size:0.8rem;color:var(--muted);margin-bottom:7px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.rest-address{font-size:0.78rem;color:var(--muted);margin-bottom:5px}
+.rest-hours{font-size:0.78rem;color:var(--muted);margin-bottom:7px}
+.rest-phone{font-size:0.78rem;color:var(--muted);margin-bottom:7px}
+.cuisine-tag{display:inline-block;font-size:0.72rem;background:var(--green-light);color:var(--green-dark);border-radius:4px;padding:2px 8px;margin-right:4px;margin-bottom:4px;font-weight:600}
+.dishes-row{margin-top:6px}
+.dishes-title{font-size:0.75rem;font-weight:700;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.4px}
+.dish-tag{display:inline-block;font-size:0.75rem;background:#f8f8f8;border:1px solid var(--border);border-radius:4px;padding:2px 8px;margin-right:4px;margin-bottom:4px;color:var(--text)}
+.dish-price{color:var(--green-dark);font-weight:700}
+.sponsored-badge{display:inline-block;font-size:0.68rem;background:#f0f0f0;border-radius:3px;padding:1px 6px;color:var(--muted);margin-bottom:4px}
+
+/* PRICE COL */
+.rest-price-col{text-align:right;min-width:110px;display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-start;gap:4px;padding:4px 0}
+.price-range-symbol{font-size:0.85rem;color:var(--muted);font-weight:700}
+.price-avg{font-size:1.2rem;font-weight:700;color:var(--text)}
+.price-label{font-size:0.7rem;color:var(--muted)}
+.btn-reserve{background:var(--green);color:#fff;border:none;border-radius:8px;padding:8px 16px;font-size:0.82rem;font-weight:700;cursor:pointer;margin-top:8px;white-space:nowrap;width:100%}
+.btn-reserve:hover{background:var(--green-dark)}
+.no-results{text-align:center;padding:40px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <div class="nav-left">
+    <a href="index.html" id="logoLink" class="logo">🦉 Tripadvisor</a>
+    <div class="nav-links">
+      <a href="hotels.html"      id="navHotels"      class="nav-link">Hotels</a>
+      <a href="restaurants.html" id="navRestaurants" class="nav-link active">Restaurants</a>
+      <a href="#"                id="navThingsToDo"  class="nav-link">Things to Do</a>
+      <a href="cruises.html"     id="navCruises"     class="nav-link">Cruises</a>
+      <a href="#"                id="navForums"      class="nav-link">Forums</a>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px">
+    <span style="font-size:0.85rem;color:var(--muted)">INR</span>
+    <button class="btn-signin">Sign in</button>
+  </div>
+</nav>
+
+<div class="city-nav">
+  <div class="city-tab">🗺️ Nairobi</div>
+  <a href="hotels.html" class="city-tab">🏨 Hotels</a>
+  <div class="city-tab">🎯 Things to Do</div>
+  <a href="restaurants.html" class="city-tab active">🍽️ Restaurants</a>
+  <div class="city-tab">💬 Forums</div>
+</div>
+
+<div class="breadcrumb" id="breadcrumb">
+  <a href="#">Africa</a><span>›</span>
+  <a href="#">Kenya</a><span>›</span>
+  <a href="#">Nairobi</a><span>›</span>
+  Nairobi Restaurants
+  <span style="float:right;font-weight:700">Best Restaurants in Nairobi 2026</span>
+</div>
+
+<div class="page-header">
+  <h1 id="pageHeading">Restaurants in Nairobi</h1>
+  <div class="subtitle">Top-rated restaurants with pricing — updated 2026</div>
+</div>
+
+<div class="page-layout">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar" id="filterSidebar">
+    <div class="sidebar-title">Filters</div>
+
+    <div class="filter-section">
+      <div class="filter-title">Establishment type <span>∧</span></div>
+      <div class="filter-item"><input type="checkbox" id="estRestaurants" checked onclick="applyFilters()"/><label for="estRestaurants">Restaurants</label><span class="count">(1,057)</span></div>
+      <div class="filter-item"><input type="checkbox" id="estCoffee" onclick="applyFilters()"/><label for="estCoffee">Coffee &amp; Tea</label><span class="count">(234)</span></div>
+      <div class="filter-item"><input type="checkbox" id="estBars" onclick="applyFilters()"/><label for="estBars">Bars &amp; Pubs</label><span class="count">(156)</span></div>
+      <div class="filter-item"><input type="checkbox" id="estQuick" onclick="applyFilters()"/><label for="estQuick">Quick Bites</label><span class="count">(312)</span></div>
+    </div>
+
+    <div class="filter-section">
+      <div class="filter-title">Meal type <span>∧</span></div>
+      <div class="filter-item"><input type="checkbox" id="mealBreakfast" onclick="applyFilters()"/><label for="mealBreakfast">Breakfast</label></div>
+      <div class="filter-item"><input type="checkbox" id="mealBrunch"    onclick="applyFilters()"/><label for="mealBrunch">Brunch</label></div>
+      <div class="filter-item"><input type="checkbox" id="mealLunch"     onclick="applyFilters()"/><label for="mealLunch">Lunch</label></div>
+      <div class="filter-item"><input type="checkbox" id="mealDinner"    onclick="applyFilters()"/><label for="mealDinner">Dinner</label></div>
+    </div>
+
+    <div class="filter-section">
+      <div class="filter-title">Cuisines <span>∧</span></div>
+      <div class="filter-item"><input type="checkbox" id="cuisineAfrican"  onclick="applyFilters()"/><label for="cuisineAfrican">African</label></div>
+      <div class="filter-item"><input type="checkbox" id="cuisineAsian"    onclick="applyFilters()"/><label for="cuisineAsian">Asian</label></div>
+      <div class="filter-item"><input type="checkbox" id="cuisineEuropean" onclick="applyFilters()"/><label for="cuisineEuropean">European</label></div>
+      <div class="filter-item"><input type="checkbox" id="cuisineKenyan"   onclick="applyFilters()"/><label for="cuisineKenyan">Kenyan</label></div>
+    </div>
+
+    <div class="filter-section">
+      <div class="filter-title">Dishes <span>∧</span></div>
+      <div class="filter-item"><input type="checkbox" id="dishFish"    onclick="applyFilters()"/><label for="dishFish">Fish</label></div>
+      <div class="filter-item"><input type="checkbox" id="dishChicken" onclick="applyFilters()"/><label for="dishChicken">Chicken</label></div>
+      <div class="filter-item"><input type="checkbox" id="dishBurger"  onclick="applyFilters()"/><label for="dishBurger">Burger</label></div>
+      <div class="filter-item"><input type="checkbox" id="dishBeef"    onclick="applyFilters()"/><label for="dishBeef">Beef</label></div>
+    </div>
+
+    <div class="filter-section">
+      <div class="filter-title">Price range <span>∧</span></div>
+      <div class="filter-item"><input type="checkbox" id="priceBudget" onclick="applyFilters()"/><label for="priceBudget">₹ (Under ₹800)</label></div>
+      <div class="filter-item"><input type="checkbox" id="priceMid"    onclick="applyFilters()"/><label for="priceMid">₹₹ (₹800–₹1,500)</label></div>
+      <div class="filter-item"><input type="checkbox" id="priceFine"   onclick="applyFilters()"/><label for="priceFine">₹₹₹ (₹1,500–₹3,000)</label></div>
+      <div class="filter-item"><input type="checkbox" id="priceLuxury" onclick="applyFilters()"/><label for="priceLuxury">₹₹₹₹ (Above ₹3,000)</label></div>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="results" id="resultsSection">
+    <div class="sort-bar" id="sortBar">
+      <div class="results-count"><strong id="resultCount">12</strong> results</div>
+      <div class="sort-wrap">
+        Sort:
+        <select class="sort-select" id="sortSelect" onclick="applyFilters()">
+          <option value="featured">Featured</option>
+          <option value="rating">Highest Rated</option>
+          <option value="reviews">Most Reviewed</option>
+          <option value="price_asc">Price: Low to High</option>
+          <option value="price_desc">Price: High to Low</option>
+        </select>
+      </div>
+    </div>
+    <div id="restaurantList"></div>
+  </div>
+</div>
+
+<script>
+const restaurants = [
+  {
+    id: 1,
+    name: "Royal 58 Restaurant",
+    cuisine: ["International", "Contemporary"],
+    meals: ["breakfast","lunch","dinner"],
+    dishes: ["chicken","beef"],
+    rating: 4.8, reviews: 172,
+    priceSymbol: "₹₹₹₹", avgPrice: 3800,
+    open: "Open now", hours: "12:00 PM – 11:00 PM",
+    address: "58 Westlands Rd, Westlands, Nairobi",
+    phone: "+254 20 374 5800",
+    description: "Nairobi's most celebrated fine-dining destination. An intimate 40-seat restaurant helmed by Chef James Kariuki, featuring a seasonal tasting menu that marries East African ingredients with French technique.",
+    popularDishes: [{name:"Wagyu Tenderloin",price:4200},{name:"Lobster Bisque",price:1800},{name:"Truffle Pasta",price:2600}],
+    img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&q=80",
+    sponsored: true
+  },
+  {
+    id: 2,
+    name: "The Carnivore Restaurant",
+    cuisine: ["African","Steakhouse"],
+    meals: ["lunch","dinner"],
+    dishes: ["beef","fish","chicken"],
+    rating: 4.2, reviews: 6527,
+    priceSymbol: "₹₹₹", avgPrice: 2200,
+    open: "Opens in 28 min", hours: "12:00 PM – 10:30 PM",
+    address: "Langata Rd, Karen, Nairobi",
+    phone: "+254 20 605 3000",
+    description: "Nairobi's most iconic restaurant since 1980. Famous for its all-you-can-eat nyama choma (roasted meats) served on Maasai swords directly at your table. A legendary dining experience unlike any other.",
+    popularDishes: [{name:"All-You-Can-Eat Nyama Choma",price:2500},{name:"Crocodile Kebab",price:1800},{name:"Ostrich Steak",price:2200}],
+    img: "https://images.unsplash.com/photo-1544025162-d76694265947?w=500&q=80",
+    sponsored: false
+  },
+  {
+    id: 3,
+    name: "Habesha Ethiopian Restaurant",
+    cuisine: ["African","Ethiopian"],
+    meals: ["lunch","dinner"],
+    dishes: ["fish","chicken"],
+    rating: 4.2, reviews: 453,
+    priceSymbol: "₹₹", avgPrice: 1100,
+    open: "Open now", hours: "11:00 AM – 10:00 PM",
+    address: "Westlands Square, Westlands, Nairobi",
+    phone: "+254 720 123 456",
+    description: "Authentic Ethiopian cuisine served on communal injera bread. The warm atmosphere with traditional decor and live music on weekends makes this a beloved gathering spot for the East African community.",
+    popularDishes: [{name:"Doro Wat",price:1200},{name:"Kitfo (Ethiopian Tartare)",price:1400},{name:"Vegetarian Platter",price:950}],
+    img: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&q=80",
+    sponsored: false
+  },
+  {
+    id: 4,
+    name: "Lord Delamere Terrace",
+    cuisine: ["African","International"],
+    meals: ["breakfast","lunch","dinner"],
+    dishes: ["fish","beef","chicken"],
+    rating: 4.3, reviews: 140,
+    priceSymbol: "₹₹₹", avgPrice: 1900,
+    open: "Opens in 28 min", hours: "7:00 AM – 11:00 PM",
+    address: "Norfolk Hotel, Harry Thuku Rd, Nairobi CBD",
+    phone: "+254 20 226 5000",
+    description: "A Nairobi institution set in the historic Norfolk Hotel (est. 1904). The wide colonial veranda overlooking the city is perfect for a sundowner. Expect refined Kenyan classics and an extensive wine cellar.",
+    popularDishes: [{name:"Nyali Whole Grilled Fish",price:2200},{name:"Kenyan Lamb Chops",price:2400},{name:"Full English Breakfast",price:1600}],
+    img: "https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?w=500&q=80",
+    sponsored: false
+  },
+  {
+    id: 5,
+    name: "Talisman Restaurant",
+    cuisine: ["International","European"],
+    meals: ["lunch","dinner"],
+    dishes: ["fish","chicken"],
+    rating: 4.6, reviews: 1820,
+    priceSymbol: "₹₹₹", avgPrice: 2500,
+    open: "Open now", hours: "12:00 PM – 10:30 PM",
+    address: "320 Ngong Rd, Karen, Nairobi",
+    phone: "+254 20 388 9179",
+    description: "Set in a beautiful colonial house surrounded by lush gardens in Karen, Talisman is the epitome of relaxed fine dining. Famous for its warm chocolate fondant and extensive Sunday lunch buffet.",
+    popularDishes: [{name:"Warm Chocolate Fondant",price:850},{name:"Pan-Seared Sea Bass",price:2800},{name:"Karen Garden Salad",price:900}],
+    img: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=500&q=80",
+    sponsored: false
+  },
+  {
+    id: 6,
+    name: "Kikwetu Restaurant",
+    cuisine: ["African","Kenyan"],
+    meals: ["lunch","dinner"],
+    dishes: ["fish","chicken","beef"],
+    rating: 4.4, reviews: 520,
+    priceSymbol: "₹₹", avgPrice: 950,
+    open: "Open now", hours: "11:30 AM – 9:30 PM",
+    address: "Kenyatta Ave, Nairobi CBD",
+    phone: "+254 722 456 789",
+    description: "A cheerful and affordable restaurant championing local Kenyan produce. The hand-painted walls depict scenes of Kenyan wildlife and culture. Perfect for a hearty ugali meal or grilled tilapia fresh from Lake Victoria.",
+    popularDishes: [{name:"Grilled Tilapia & Ugali",price:1100},{name:"Kenyan Beef Stew",price:900},{name:"Sukuma Wiki & Chapati",price:600}],
+    img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&q=80",
+    sponsored: false
+  },
+  {
+    id: 7,
+    name: "Nyama Mama",
+    cuisine: ["African","Kenyan"],
+    meals: ["lunch","dinner","brunch"],
+    dishes: ["beef","chicken","fish"],
+    rating: 4.3, reviews: 2100,
+    priceSymbol: "₹₹", avgPrice: 1200,
+    open: "Open now", hours: "11:00 AM – 11:00 PM",
+    address: "The Junction Mall, Ngong Rd, Nairobi",
+    phone: "+254 20 231 4567",
+    description: "A vibrant modern Kenyan bistro that puts a creative spin on classic street food and home cooking. The Nyama (meaning 'meat') bowls and thick-cut chips are a crowd favourite. Great weekend brunch.",
+    popularDishes: [{name:"Nyama Bowl",price:1350},{name:"Smoky Chicken Wings",price:1100},{name:"Swahili Fish Curry",price:1400}],
+    img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=500&q=80",
+    sponsored: false
+  },
+  {
+    id: 8,
+    name: "Mediterraneo Restaurant",
+    cuisine: ["European","Italian"],
+    meals: ["lunch","dinner"],
+    dishes: ["fish","beef"],
+    rating: 4.5, reviews: 890,
+    priceSymbol: "₹₹₹", avgPrice: 2100,
+    open: "Open now", hours: "12:00 PM – 10:00 PM",
+    address: "Muthaiga Shopping Centre, Muthaiga, Nairobi",
+    phone: "+254 20 374 1234",
+    description: "Nairobi's favourite Italian, serving wood-fired Neapolitan pizzas, hand-rolled pasta and imported Italian wines for over 20 years. The antipasti bar alone is worth the visit.",
+    popularDishes: [{name:"Wood-Fired Margherita Pizza",price:1600},{name:"Spaghetti Carbonara",price:1900},{name:"Tiramisu",price:750}],
+    img: "https://images.unsplash.com/photo-1579684947550-22e945be3235?w=500&q=80",
+    sponsored: false
+  },
+  {
+    id: 9,
+    name: "Sno-Cream Restaurant",
+    cuisine: ["African","Kenyan"],
+    meals: ["breakfast","lunch"],
+    dishes: ["chicken","fish"],
+    rating: 4.1, reviews: 340,
+    priceSymbol: "₹", avgPrice: 450,
+    open: "Open now", hours: "7:00 AM – 6:00 PM",
+    address: "River Rd, Nairobi CBD",
+    phone: "+254 722 111 222",
+    description: "A no-frills Nairobi institution beloved by locals since the 1970s. Sno-Cream serves hearty Kenyan breakfasts and affordable lunch plates in a relaxed, canteen-style setting right in the city centre.",
+    popularDishes: [{name:"Mandazi & Chai",price:150},{name:"Githeri Plate",price:350},{name:"Fried Chicken & Rice",price:500}],
+    img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&q=80",
+    sponsored: false
+  },
+  {
+    id: 10,
+    name: "Java House Westlands",
+    cuisine: ["International"],
+    meals: ["breakfast","lunch","brunch"],
+    dishes: ["chicken","burger"],
+    rating: 4.0, reviews: 1230,
+    priceSymbol: "₹₹", avgPrice: 800,
+    open: "Open now", hours: "7:00 AM – 10:00 PM",
+    address: "Sarit Centre, Westlands, Nairobi",
+    phone: "+254 20 444 5555",
+    description: "East Africa's most popular café chain. Known for its bold, freshly roasted Kenyan single-origin coffee and generous all-day breakfast menu. Reliable WiFi makes it a favourite workspace for Nairobi's professionals.",
+    popularDishes: [{name:"Big Breakfast",price:950},{name:"Chicken Club Sandwich",price:850},{name:"Single-Origin Pour Over",price:450}],
+    img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500&q=80",
+    sponsored: false
+  },
+  {
+    id: 11,
+    name: "Cultiva Restaurant & Bar",
+    cuisine: ["International","Asian"],
+    meals: ["lunch","dinner","brunch"],
+    dishes: ["fish","chicken","beef"],
+    rating: 4.5, reviews: 670,
+    priceSymbol: "₹₹₹", avgPrice: 2300,
+    open: "Open now", hours: "12:00 PM – 11:30 PM",
+    address: "14 Riverside Drive, Westlands, Nairobi",
+    phone: "+254 20 523 1000",
+    description: "A sophisticated garden restaurant and bar along the scenic Nairobi River. The menu blends Pan-Asian flavours with East African ingredients. Famous Saturday brunch with live jazz.",
+    popularDishes: [{name:"Thai Green Curry",price:2100},{name:"Beef Tataki",price:2500},{name:"Mango Coconut Cheesecake",price:900}],
+    img: "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=500&q=80",
+    sponsored: false
+  },
+  {
+    id: 12,
+    name: "Tamarind Restaurant",
+    cuisine: ["African","International"],
+    meals: ["lunch","dinner"],
+    dishes: ["fish","beef","chicken"],
+    rating: 4.7, reviews: 3200,
+    priceSymbol: "₹₹₹₹", avgPrice: 3200,
+    open: "Open now", hours: "12:30 PM – 10:30 PM",
+    address: "National Bank Bldg, Harambee Ave, Nairobi CBD",
+    phone: "+254 20 223 8000",
+    description: "A Nairobi landmark for over 40 years, Tamarind is renowned for its spectacular seafood flown fresh from the Kenyan coast daily. The rooftop terrace offers stunning panoramic views of Nairobi city.",
+    popularDishes: [{name:"Whole Grilled Lobster",price:6500},{name:"Tamarind Prawn Curry",price:3200},{name:"Swahili Crab Claws",price:2800}],
+    img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&q=80",
+    sponsored: false
+  }
+];
+
+function applyFilters() {
+  let d = [...restaurants];
+
+  // Meal
+  const mealFilters = ['breakfast','brunch','lunch','dinner']
+    .filter(m => document.getElementById('meal' + m.charAt(0).toUpperCase() + m.slice(1))?.checked);
+  if (mealFilters.length) d = d.filter(r => mealFilters.some(m => r.meals.includes(m)));
+
+  // Cuisine
+  const cuisineMap = {cuisineAfrican:'African', cuisineAsian:'Asian', cuisineEuropean:'European', cuisineKenyan:'Kenyan'};
+  const cuisineFilters = Object.entries(cuisineMap)
+    .filter(([id]) => document.getElementById(id)?.checked)
+    .map(([,val]) => val);
+  if (cuisineFilters.length) d = d.filter(r => cuisineFilters.some(c => r.cuisine.includes(c)));
+
+  // Dishes
+  const dishFilters = ['fish','chicken','burger','beef']
+    .filter(dsh => document.getElementById('dish' + dsh.charAt(0).toUpperCase() + dsh.slice(1))?.checked);
+  if (dishFilters.length) d = d.filter(r => dishFilters.some(dsh => r.dishes.includes(dsh)));
+
+  // Price range
+  const priceOn = {
+    budget: document.getElementById('priceBudget')?.checked,
+    mid:    document.getElementById('priceMid')?.checked,
+    fine:   document.getElementById('priceFine')?.checked,
+    luxury: document.getElementById('priceLuxury')?.checked,
+  };
+  if (Object.values(priceOn).some(Boolean)) {
+    d = d.filter(r => {
+      if (priceOn.budget  && r.avgPrice < 800)                         return true;
+      if (priceOn.mid     && r.avgPrice >= 800  && r.avgPrice < 1500) return true;
+      if (priceOn.fine    && r.avgPrice >= 1500 && r.avgPrice < 3000) return true;
+      if (priceOn.luxury  && r.avgPrice >= 3000)                       return true;
+      return false;
+    });
+  }
+
+  // Sort
+  const sort = document.getElementById('sortSelect').value;
+  if (sort === 'rating')     d.sort((a,b) => b.rating - a.rating);
+  if (sort === 'reviews')    d.sort((a,b) => b.reviews - a.reviews);
+  if (sort === 'price_asc')  d.sort((a,b) => a.avgPrice - b.avgPrice);
+  if (sort === 'price_desc') d.sort((a,b) => b.avgPrice - a.avgPrice);
+
+  document.getElementById('resultCount').textContent = d.length;
+
+  if (d.length === 0) {
+    document.getElementById('restaurantList').innerHTML =
+      '<div id="noResults" class="no-results">No restaurants match the selected filters.</div>';
+    return;
+  }
+
+  document.getElementById('restaurantList').innerHTML = d.map((r, idx) => {
+    const full    = Math.floor(r.rating);
+    const hasHalf = (r.rating % 1) >= 0.5;
+    const empty   = 5 - full - (hasHalf ? 1 : 0);
+    const bubbles = Array(full).fill(`<span class="bubble"></span>`).join('') +
+                    (hasHalf ? `<span class="bubble half"></span>` : '') +
+                    Array(empty).fill(`<span class="bubble empty"></span>`).join('');
+    const openClass = r.open.startsWith('Open now') ? 'open-now'
+                    : r.open.startsWith('Closed')   ? 'closed' : 'open-soon';
+    const dishHtml = r.popularDishes.map(d =>
+      `<span class="dish-tag">${d.name} <span class="dish-price">₹${d.price.toLocaleString('en-IN')}</span></span>`
+    ).join('');
+
+    return `
+    <div class="rest-card" id="rest-${r.id}" data-testid="rest-card" data-rest-id="${r.id}">
+      <img class="rest-img" id="restImg-${r.id}" src="${r.img}" alt="${r.name}"
+           onerror="this.style.background='linear-gradient(135deg,#00af87,#005f47)';this.src='';"/>
+      <div class="rest-body">
+        <div class="rest-info">
+          ${r.sponsored ? '<span class="sponsored-badge">Sponsored</span>' : ''}
+          <div class="rest-rank" id="restRank-${r.id}">${idx+1} of ${d.length}</div>
+          <div class="rest-name" id="restName-${r.id}" data-testid="rest-name">${r.name}</div>
+          <div class="rating-row" id="restRating-${r.id}">
+            ${bubbles}
+            <span class="rating-text" id="ratingVal-${r.id}">${r.rating}</span>
+            <span class="review-count" id="reviewCount-${r.id}">(${r.reviews.toLocaleString()} reviews)</span>
+          </div>
+          <div class="rest-meta">
+            🍴 ${r.cuisine.join(', ')}
+            <span class="dot"></span>
+            <span class="${openClass}" id="openStatus-${r.id}">⏱ ${r.open}</span>
+            <span class="dot"></span>
+            🕐 ${r.hours}
+          </div>
+          <div class="rest-address" id="restAddress-${r.id}">📍 ${r.address}</div>
+          <div class="rest-phone" id="restPhone-${r.id}">📞 ${r.phone}</div>
+          <div class="rest-desc" id="restDesc-${r.id}">${r.description}</div>
+          <div class="dishes-row" id="restDishes-${r.id}">
+            <div class="dishes-title">Popular Dishes</div>
+            ${dishHtml}
+          </div>
+          <div style="margin-top:6px">
+            ${r.cuisine.map(c => `<span class="cuisine-tag" data-cuisine="${c}">${c}</span>`).join('')}
+          </div>
+        </div>
+        <div class="rest-price-col" id="restPriceCol-${r.id}">
+          <div class="price-range-symbol" id="priceSymbol-${r.id}" data-testid="price-symbol">${r.priceSymbol}</div>
+          <div class="price-avg" id="priceAvg-${r.id}" data-testid="price-avg">₹${r.avgPrice.toLocaleString('en-IN')}</div>
+          <div class="price-label">avg per person</div>
+          <button class="btn-reserve" id="reserveBtn-${r.id}"
+            onclick="alert('Reserve at ${r.name}\\n${r.address}\\n${r.phone}')">Reserve</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+applyFilters();
+</script>
+</body>
+</html>
